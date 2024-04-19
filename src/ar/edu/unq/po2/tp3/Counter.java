@@ -23,7 +23,7 @@ public class Counter {
 	public int cantImpares(){
 		int impares = 0;
 		for(int n = 0; n < numbers.size(); n++){
-			if (numbers.get(n) % 2 == 0){
+			if (numbers.get(n) % 2 == 1){
 				impares ++;
 			}
 		}
