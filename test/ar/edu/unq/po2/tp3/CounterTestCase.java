@@ -55,5 +55,18 @@ class CounterTestCase {
 	// I check the amount is the expected one
 	assertEquals(amount, 1);
 	}
+	
+	@Test
+	public void testCantidadDePares() {
+		counter.addNumber(22222);
+		counter.addNumber(34);
+		counter.addNumber(68);
+		int amount = counter.mayorDigitosPares(counter.getNumbers());
+	assertEquals(amount,5);
+	}
+	@Test
+	public void testMultiploMaximo() {
+		assertEquals(counter.maxMultiplo(3, 9),999);
+	}
 
 }

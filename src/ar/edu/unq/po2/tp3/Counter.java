@@ -38,6 +38,41 @@ public class Counter {
 		}
 		return multi;
 	}
-
-
+	
+	
+	public ArrayList<Integer> getNumbers() {
+		return numbers;
+	}
+	public int mayorDigitosPares(ArrayList<Integer> numeros) {
+		
+		int mayorPares = 0;
+		for (int n = 0; n< numbers.size(); n++) {
+		mayorPares = Math.max(mayorPares, contarPares(numeros.get(n)));
+		}
+		
+		
+		return mayorPares;
+	}
+	
+	public int contarPares(int n) {
+		int count = 0;
+		
+		while ( n != 0 ) {
+			int digito = n % 10;
+			if(digito % 2 == 0) {
+				count ++ ;
+			}
+			n = n/10;
+		}
+		return count;
+	}
+	
+	public int maxMultiplo(int x, int y) {
+			for(int i = 1000; i>= 0; i--) {
+				if(i % x == 0 && i % y == 0) {
+					return i;
+				}
+			}
+			return -1;
+	}
 }
