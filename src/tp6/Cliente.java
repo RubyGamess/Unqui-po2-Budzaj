@@ -11,6 +11,7 @@ public class Cliente {
 	private Credito credito;
 	private Propiedad propiedad;
 	public Boolean informe;
+	public int montoARecibir = 0;
 	public Boolean getInforme() {
 		return informe;
 	}

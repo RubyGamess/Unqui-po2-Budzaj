@@ -2,13 +2,16 @@ package tp6;
 
 import java.util.ArrayList;
 //Link top UML: https://drive.google.com/file/d/1v2z1Wo-9At2TiRPaqE-rfESHYCxnnNl3/view?usp=sharing
-public class Banco {
+public class Banco implements SistemaInformatico{
 
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	
+	@Override
 	public void agregarCliente(Cliente cliente) {
-		clientes.add(cliente);
+		
+		this.clientes.add(cliente);
 	}
+	
 	
 	public void recibirSolicitud(Cliente cliente, int sumaDinero,int plazoMeses) {
 	
@@ -29,14 +32,19 @@ public class Banco {
 		cliente.informe = false;
 	} 
 
-	//hacerlo en interfaz
-	//private Boolean evaluarSolicitud(Cliente cliente, int sumaDinero) {
-		// credito hipotecario
-	//Boolean	evauacion = (cliente.getNetoMensual() / 2 <   sumaDinero) && cliente.getEdad() < 65 && ;
-	//}
+	@Override
+	public int desembolsoTotal() {
+		int desembolso = 0;
+		for (int i = 0; i < clientes.size(); i++) {
+			Cliente c = clientes.get(i);
+			if (c.informe) desembolso = desembolso + c.montoARecibir;
+		}
+		return desembolso;
+	}
 
 	private void otorgarCredito(Cliente c, int plata) {
 		//Darle la plata al cliente.
+		c.montoARecibir = plata;
 		c.informe = true;
 
 	}

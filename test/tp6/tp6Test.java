@@ -17,6 +17,7 @@ class tp6Test {
 	public CreditoPersonal creditoPersonal;
 	public CreditoHipotecario creditoHipotecario;
 
+	public SistemaInformatico sis;
 	@BeforeEach
 	void setUp() throws Exception {
 		 creditoPersonal = new CreditoPersonal();
@@ -61,6 +62,17 @@ class tp6Test {
 		banco.agregarCliente(cliente1);
 		cliente1.solicitarCredito(banco, 2000000, 26);
 		assertFalse(cliente1.getInforme());
+		
+	}
+	@Test
+	void testDesembolsoDelBanco() {
+		cliente2.creditoASolicitar( creditoPersonal);
+		banco.agregarCliente(cliente2);
+		cliente2.solicitarCredito(banco, 80000, 6);
+		cliente1.creditoASolicitar(creditoPersonal);
+		banco.agregarCliente(cliente1);
+		cliente1.solicitarCredito(banco, 500000, 16);
+		assertEquals(banco.desembolsoTotal(),580000);
 		
 	}
 }
