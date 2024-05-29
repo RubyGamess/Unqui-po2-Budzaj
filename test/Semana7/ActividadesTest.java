@@ -45,7 +45,11 @@ class ActividadesTest {
 		assertEquals(1, filtrado.size());
 
 	}
-
+	@Test
+	void testTotalHoras() {
+		int filtrada = ActividadSemanal.cantHoras(listActividadesSem);
+		assertEquals(6,filtrada);
+	}
 	
 	
 }
