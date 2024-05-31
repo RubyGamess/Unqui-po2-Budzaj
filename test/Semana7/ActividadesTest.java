@@ -3,6 +3,7 @@ package Semana7;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -29,8 +30,8 @@ class ActividadesTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		actividadSemanal1 = new ActividadSemanal(lunes, 3, 2, fulbo);
-		actividadSemanal2 = new ActividadSemanal(lunes, 6, 2, basket);
-		actividadSemanal3 = new ActividadSemanal(lunes, 9, 2, tennis);
+		actividadSemanal2 = new ActividadSemanal(jueves, 6, 5, basket);
+		actividadSemanal3 = new ActividadSemanal(viernes, 9, 2, tennis);
 		listActividadesSem =  Arrays.asList(actividadSemanal1,actividadSemanal2,actividadSemanal3);
 	}
 
@@ -48,8 +49,26 @@ class ActividadesTest {
 	@Test
 	void testTotalHoras() {
 		int filtrada = ActividadSemanal.cantHoras(listActividadesSem);
-		assertEquals(6,filtrada);
+		assertEquals(9,filtrada);
 	}
-	
-	
+	@Test
+	void testMenorCosto() {
+		ActividadSemanal s = ActividadSemanal.menorCosto(listActividadesSem);
+		assertEquals(s,actividadSemanal1);
+	}
+	@Test
+	void testMenorCostoParaCadaDeporte() {
+		//Map<Deporte, ActividadSemanal> s = ActividadSemanal.laEconomicaDeCadaActividad(listActividadesSem);
+		Map<Deporte, ActividadSemanal> s = ActividadSemanal.laMasEconomicaDeCadaActividad(listActividadesSem);
+
+		assertEquals(true,s.containsValue(actividadSemanal1));
+		assertEquals(actividadSemanal1,s.get(fulbo));
+		
+	}
+	@Test
+	void testTodasLasDelMuni() {
+		Municipio m = new Municipio();
+		m.createListFromList(listActividadesSem);
+		m.imprimirTodos(listActividadesSem);
+	}
 }

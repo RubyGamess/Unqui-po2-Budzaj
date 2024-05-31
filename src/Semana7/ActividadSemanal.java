@@ -3,6 +3,10 @@ package Semana7;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class ActividadSemanal {
 
@@ -45,13 +49,7 @@ public class ActividadSemanal {
 		return acts.stream().min((a, b) -> Integer.compare(a.calcularCosto(), b.calcularCosto())).orElse(null);
 	}
 
-	private  int getCosto() {
-		DiaDeLaSemana diaB =  this.dia;
-		int costo = 0;
-		if (diaB == dia.LUNES ||diaB ==  dia.MARTES ||diaB ==  dia.MIERCOLES) {
-			costo = 
-		}
-	}
+
 	
 	public static List<ActividadSemanal> todaslasDeFutbol(List<ActividadSemanal> dias){
 
@@ -67,4 +65,23 @@ public class ActividadSemanal {
 		// TODO Auto-generated method stub
 		return listActividadesSem.stream().mapToInt(a -> a.getDuracion()).sum();
 	}
+
+	//public static Map<Deporte, ActividadSemanal> laEconomicaDeCadaActividad(List<ActividadSemanal> listActividadesSem) {
+	//return	listActividadesSem.stream().collect(Collectors.groupingBy(ActividadSemanal :: getDeporte,
+	//																	Collectors.minBy((a, b) -> 	Integer.compare(a.calcularCosto(), b.calcularCosto())))).entrySet().stream().
+	//		filter(a -> a.getValue().isPresent()).collect(Collectors.toMap(Map.Entry :: getKey, a -> a.getValue().get()));
+	//	
+	//}
+public static Map<Deporte, ActividadSemanal> laMasEconomicaDeCadaActividad(List<ActividadSemanal> actividades){
+		
+		return actividades.stream().collect(Collectors.groupingBy(ActividadSemanal::getDeporte,Collectors.collectingAndThen(Collectors.minBy(Comparator.comparingInt(ActividadSemanal::calcularCosto)),
+                Optional::get)));
+	}
+
+	@Override
+	public String toString() {
+		return "Deporte: " + deporte + ". Dia"+ dia + " a las: "+ horaDeInicio + " hora(s).";
+ 	}
+	
+
 }
