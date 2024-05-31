@@ -1,4 +1,4 @@
-package Semana7;
+package Semana6;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +8,11 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import Semana6.ActividadSemanal;
+import Semana6.Deporte;
+import Semana6.DiaDeLaSemana;
+import Semana6.Municipio;
 
 class ActividadesTest {
 

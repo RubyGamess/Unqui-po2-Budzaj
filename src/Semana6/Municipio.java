@@ -1,4 +1,4 @@
-package Semana7;
+package Semana6;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Semana7;
+package Semana6;
 
 public enum DiaDeLaSemana {
 

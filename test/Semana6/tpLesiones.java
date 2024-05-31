@@ -1,9 +1,12 @@
-package Semana7;
+package Semana6;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import Semana6.Color;
+import Semana6.LesionesDermatologicas;
 
 class tpLesiones {
 
